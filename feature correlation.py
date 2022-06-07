@@ -6,10 +6,10 @@ from prediction import preprocess
 
 full_data = pd.read_csv("./Mission 2 - Breast Cancer/train.feats.csv")
 full_data.rename(columns=lambda x: x.replace('אבחנה-', ''), inplace=True)
-labels = pd.read_csv("./Mission 2 - Breast Cancer/train.labels.0.csv")
-classified_labels = np.where(labels == '[]', 0, 1).reshape(-1)
+labels = pd.read_csv("./Mission 2 - Breast Cancer/train.labels.1.csv") #tumor size
+# classified_labels = np.where(labels == '[]', 0, 1).reshape(-1)
 half_processed_data = preprocess(full_data)
-half_processed_data['labels'] = classified_labels
+half_processed_data['labels'] = labels
 
 
 from dython.nominal import identify_nominal_columns
